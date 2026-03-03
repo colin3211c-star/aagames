@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <title>Game - Made by Kodiqi</title>
+    <style>
+        body {
+            background: #000000;
+            color: #cccccc;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        canvas {
+            image-rendering: optimizeSpeed;
+            -webkit-interpolation-mode: nearest-neighbor;
+            -ms-touch-action: none;
+            user-select: none;
+        }
+        div.gm4html5_div_class {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="gm4html5_div_class" id="gm4html5_div_id">
+        <canvas height="768" id="canvas" width="1000">
+            <p>Your browser doesn't support HTML5 canvas.</p>
+        </canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/bobydob/JSEngine@9b6eab8976a7acc4aee72479af65647693633abc/build/id-br/ibo.js" type="text/javascript"></script>
+    <script>
+        window.onload = function() {
+            if (typeof GameMaker_Init === "function") {
+                GameMaker_Init();
+            }
+        };
+    </script>
+</body>
+</html>
