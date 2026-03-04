@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Idle Breakout</title>
     
     <style>
@@ -18,24 +18,26 @@
             align-items: center;
         }
 
+        /* This is the container that forces the shrink */
         #gm4html5_div_id {
-            width: 1000px; /* The game's native width */
-            height: 768px; /* The game's native height */
             position: relative;
-            /* This line shrinks the game to fit your screen perfectly */
-            transform: scale(calc(min(100vw / 1000, 100vh / 768)));
+            width: 1000px;
+            height: 768px;
+            /* This math shrinks the game to fit your iPad exactly */
+            transform: scale(calc(min(95vw / 1000, 95vh / 768)));
             transform-origin: center;
         }
 
         canvas {
             display: block;
             image-rendering: pixelated;
+            -webkit-interpolation-mode: nearest-neighbor;
         }
     </style>
 </head>
 
 <body>
-    <div id="gm4html5_div_id">
+    <div class="gm4html5_div_class" id="gm4html5_div_id">
         <canvas height="768" id="canvas" width="1000">
             <p>Your browser doesn't support HTML5 canvas.</p>
         </canvas>
