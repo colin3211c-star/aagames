@@ -14,7 +14,6 @@
             --accent: #38bdf8;
         }
 
-        /* Start with white background for the disguise */
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #ffffff;
@@ -73,7 +72,7 @@
         input[type="password"] {
             width: 100%;
             padding: 13px;
-            margin-bottom: 25px;
+            margin-bottom: 8px;
             border: 1px solid #dadce0;
             border-radius: 4px;
             font-size: 16px;
@@ -84,6 +83,21 @@
         input[type="password"]:focus {
             border: 2px solid #1a73e8;
             padding: 12px;
+        }
+
+        .forgot-link {
+            display: block;
+            text-align: left;
+            color: #1a73e8;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
         }
 
         .pass-btn {
@@ -98,7 +112,7 @@
             float: right;
         }
 
-        /* --- THE ACTUAL ARCADE (Hidden by default) --- */
+        /* --- THE ACTUAL ARCADE --- */
         #main-content {
             display: none;
             width: 100%;
@@ -145,7 +159,11 @@
             <img class="classroom-logo" src="https://www.gstatic.com/images/branding/product/1x/classroom_48dp.png" alt="Google">
             <h2>Sign in</h2>
             <p>Use your Google Account</p>
+            
             <input type="password" id="pass-input" placeholder="Enter your password">
+            
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSen6yi7Ms2fYYTBNpisB72jy3ko2q_RNQFIjMDC6R2XfaCUvg/viewform?usp=publish-editor" target="_blank" class="forgot-link">Forgot password or New password?</a>
+            
             <button class="pass-btn" onclick="checkPass()">Next</button>
         </div>
     </div>
@@ -186,22 +204,22 @@
     <script>
         function checkPass() {
             const input = document.getElementById('pass-input').value;
-            const PASS = "gP5SrggL";
             
-            if (input === PASS) {
-                // Remove login screen
+            const PASSWORDS = [
+                "gP5SrggL",
+                "Arcade2026",
+                "Guest123"
+            ];
+            
+            if (PASSWORDS.includes(input)) {
                 document.getElementById('password-overlay').style.display = 'none';
-                // Show games
                 document.getElementById('main-content').style.display = 'block';
-                // Change background to dark
                 document.body.style.backgroundColor = "#0f172a";
             } else {
-                // Redirect to ACTUAL Google Classroom if wrong
                 window.location.href = "https://classroom.google.com";
             }
         }
 
-        // Enter key support
         document.getElementById('pass-input').addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 checkPass();
