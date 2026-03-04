@@ -25,15 +25,15 @@
             height: 768px; 
             position: relative;
             
-            /* Reduced to 55vh (55% of screen height) to force a large safety gap */
-            /* This ensures the top money bar is always visible on iPad */
-            transform: scale(calc(min(90vw / 1000, 55vh / 768)));
+            /* Reduced to 45vh to ensure a massive safety gap for iPad bars */
+            transform: scale(calc(min(90vw / 1000, 45vh / 768)));
             transform-origin: center;
             
-            border: 8px solid #1e293b;
-            border-radius: 12px;
+            /* Visual Frame */
+            border: 10px solid #1e293b;
+            border-radius: 15px;
             background-color: #000;
-            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+            box-shadow: 0 0 50px rgba(0,0,0,0.9);
         }
 
         canvas {
@@ -41,6 +41,7 @@
             image-rendering: pixelated;
             width: 100% !important;
             height: 100% !important;
+            border-radius: 5px;
         }
     </style>
 </head>
