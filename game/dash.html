@@ -9,13 +9,38 @@
     <link rel="stylesheet" href="themes/geometrydashlite.io/rs/css/home.css?v=1">
     
     <style>
+        /* --- HOME BUTTON STYLE --- */
+        .home-button {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 9999; /* Higher than the loader (99) */
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .home-button:hover {
+            opacity: 1.0;
+            background-color: #334155;
+        }
+
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            overflow: hidden; /* Prevents the page from scrolling away from the game */
-            background: #000; /* Solid black background looks better if scaling occurs */
+            overflow: hidden;
+            background: #000;
         }
 
         #gameContainer {
@@ -27,7 +52,6 @@
         }
 
         canvas {
-            /* This ensures the game maintains its shape but never goes off-screen */
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
@@ -55,6 +79,8 @@
 </head>
 
 <body>
+    <a href="https://[YOUR-GITHUB-USERNAME].github.io/[YOUR-REPO-NAME]/" class="home-button">🏠 Back to Classroom</a>
+
     <div id="gameContainer"></div>
     
     <div id="loader">
