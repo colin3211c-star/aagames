@@ -17,7 +17,9 @@
             background-color: #0f172a; 
             display: flex;
             justify-content: center;
-            align-items: center; 
+            /* Aligns to top with a tiny gap to ensure stats are visible first */
+            align-items: flex-start; 
+            padding-top: 20px;
         }
 
         #game-container {
@@ -25,12 +27,13 @@
             height: 768px; 
             position: relative;
             
-            /* Increased to 0.7 (70% size). Large enough to see, small enough to fit. */
-            transform: scale(0.7); 
-            transform-origin: center;
+            /* Increased to 0.78 for a bigger view */
+            transform: scale(0.78); 
+            /* Scaling from the top center keeps the menu in a predictable spot */
+            transform-origin: top center;
             
             /* Visual Frame */
-            border: 12px solid #1e293b;
+            border: 10px solid #1e293b;
             border-radius: 15px;
             background-color: #000;
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
