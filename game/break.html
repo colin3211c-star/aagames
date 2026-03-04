@@ -17,33 +17,26 @@
             background-color: #0f172a; 
             display: flex;
             justify-content: center;
-            /* Aligns to top with a tiny gap to ensure stats are visible first */
-            align-items: flex-start; 
-            padding-top: 20px;
+            align-items: center; 
         }
 
         #game-container {
-            width: 1000px; 
-            height: 768px; 
+            /* We set the container to the size you want (780px is 78% of 1000px) */
+            width: 780px; 
+            height: 599px; 
             position: relative;
-            
-            /* Increased to 0.78 for a bigger view */
-            transform: scale(0.78); 
-            /* Scaling from the top center keeps the menu in a predictable spot */
-            transform-origin: top center;
-            
-            /* Visual Frame */
             border: 10px solid #1e293b;
             border-radius: 15px;
             background-color: #000;
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
         }
 
+        /* We force the canvas to fill the container exactly */
         canvas {
-            display: block;
-            image-rendering: pixelated;
             width: 100% !important;
             height: 100% !important;
+            display: block;
+            image-rendering: pixelated;
         }
     </style>
 </head>
@@ -51,7 +44,7 @@
 
     <div id="game-container">
         <div class="gm4html5_div_class" id="gm4html5_div_id">
-            <canvas height="768" id="canvas" width="1000">
+            <canvas height="599" id="canvas" width="780">
                 <p>Your browser doesn't support HTML5 canvas.</p>
             </canvas>
         </div>
