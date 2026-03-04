@@ -21,20 +21,24 @@
         }
 
         #game-container {
-            /* We set the container to the size you want (780px is 78% of 1000px) */
-            width: 780px; 
-            height: 599px; 
+            /* Keep the internal size exactly 1000x768 so clicks work */
+            width: 1000px; 
+            height: 768px; 
             position: relative;
-            border: 10px solid #1e293b;
-            border-radius: 15px;
+            
+            /* ZOOM is the secret: it shrinks the visuals AND the click-zone together */
+            /* 0.75 makes it 75% size. Adjust this number to change size. */
+            zoom: 0.75; 
+            -moz-transform: scale(0.75); /* Firefox fix */
+            -moz-transform-origin: center;
+            
+            border: 12px solid #1e293b;
+            border-radius: 20px;
             background-color: #000;
             box-shadow: 0 0 50px rgba(0,0,0,0.8);
         }
 
-        /* We force the canvas to fill the container exactly */
         canvas {
-            width: 100% !important;
-            height: 100% !important;
             display: block;
             image-rendering: pixelated;
         }
@@ -44,7 +48,7 @@
 
     <div id="game-container">
         <div class="gm4html5_div_class" id="gm4html5_div_id">
-            <canvas height="599" id="canvas" width="780">
+            <canvas height="768" id="canvas" width="1000">
                 <p>Your browser doesn't support HTML5 canvas.</p>
             </canvas>
         </div>
