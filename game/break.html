@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
     
     <title>Google Classroom</title>
     <link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png">
@@ -11,36 +11,31 @@
         body, html {
             margin: 0;
             padding: 0;
-            width: 100%;
+            width: 1000px; /* Force the body to be the game's native width */
             height: 100%;
-            overflow: hidden; 
             background-color: #0f172a; 
             display: flex;
             justify-content: center;
-            align-items: center; 
+            align-items: center;
+            /* Prevents the iPad from bouncing the screen when you tap */
+            touch-action: none; 
         }
 
         #game-container {
-            /* Keep the internal size exactly 1000x768 so clicks work */
-            width: 1000px; 
-            height: 768px; 
+            width: 1000px;
+            height: 768px;
             position: relative;
-            
-            /* ZOOM is the secret: it shrinks the visuals AND the click-zone together */
-            /* 0.75 makes it 75% size. Adjust this number to change size. */
-            zoom: 0.75; 
-            -moz-transform: scale(0.75); /* Firefox fix */
-            -moz-transform-origin: center;
-            
-            border: 12px solid #1e293b;
-            border-radius: 20px;
+            /* Using a simple zoom to make it fit the iPad screen visually */
+            zoom: 0.8; 
+            border: 10px solid #1e293b;
+            border-radius: 15px;
             background-color: #000;
-            box-shadow: 0 0 50px rgba(0,0,0,0.8);
         }
 
         canvas {
             display: block;
-            image-rendering: pixelated;
+            width: 1000px !important;
+            height: 768px !important;
         }
     </style>
 </head>
