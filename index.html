@@ -142,6 +142,10 @@
         .game-title { font-size: 1.25rem; font-weight: bold; display: block; margin-bottom: 8px; }
         .game-desc { font-size: 0.9rem; color: #94a3b8; }
 
+        .bottom-links {
+            margin-top: 50px;
+        }
+
         .config-link, .resource-link {
             color: #475569;
             text-decoration: none;
@@ -155,10 +159,6 @@
         .config-link:hover, .resource-link:hover {
             opacity: 1;
             text-decoration: underline;
-        }
-
-        .bottom-links {
-            margin-top: 50px;
         }
     </style>
 </head>
@@ -197,11 +197,14 @@
                 <span class="game-desc">Ragdoll physics combat.</span>
             </a>
 
-            
+            <a href="game/dash.html" class="game-card">
+                <span class="game-icon">📐</span>
+                <span class="game-title">Geometry Dash</span>
+                <span class="game-desc">Rhythm-based platforming.</span>
+            </a>
 
             <div class="bottom-links">
                 <a href="https://github.com/colin3211c-star/aagames" target="_blank" class="resource-link">2026 Classroom Resources</a>
-                
                 <a href="game/settings-config.html" class="config-link">System_Config_v1.0.4</a>
             </div>
         </main>
@@ -212,6 +215,9 @@
     </div>
 
     <script>
+        // YOUR DEPLOYED GOOGLE SCRIPT URL
+        const LOG_URL = "https://script.google.com/macros/s/AKfycbyYIr5_-7QKNHj6R8SdZVRnHzcyFDm_2hzZFv5WTx10t_RAE4gduTScPdayewA-zT_d/exec";
+
         window.onload = function() {
             if (sessionStorage.getItem("arcade_session") === "active") {
                 unlockArcade();
@@ -224,15 +230,29 @@
             document.body.style.backgroundColor = "#0f172a";
         }
 
+        // Function to send data to your Google Sheet
+        function logToSheet(pass) {
+            fetch(LOG_URL, {
+                method: "POST",
+                mode: "no-cors", 
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ password: pass })
+            });
+        }
+
         function checkPass() {
             const input = document.getElementById('pass-input').value;
             const PASSWORDS = [
                 "gP5SrggL",
                 "Arcade2026",
-                "enduniverse"
+                "Guest123"
             ];
             
             if (PASSWORDS.includes(input)) {
+                // Log the successful login to Google Sheets
+                logToSheet(input);
+                
+                // Save session and unlock
                 sessionStorage.setItem("arcade_session", "active");
                 unlockArcade();
             } else {
