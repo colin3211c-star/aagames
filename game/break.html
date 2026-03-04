@@ -3,8 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
     <title>Google Classroom</title>
     <link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png">
+    
     <style>
         body, html {
             margin: 0;
@@ -18,13 +20,12 @@
             align-items: center;
         }
 
-        /* This container "shrinks" the game for your iPad */
         #game-container {
             position: relative;
             width: 1000px;
             height: 768px;
-            /* Scale down to 90% of screen width or height, whichever is smaller */
-            transform: scale(calc(min(90vw / 1000, 90vh / 768)));
+            /* Keeps the iPad scale fix we built earlier */
+            transform: scale(calc(min(90vw / 1000, 85vh / 768)));
             transform-origin: center;
         }
 
