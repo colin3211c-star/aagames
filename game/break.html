@@ -8,23 +8,34 @@
         background-color: #000;
         display: flex;
         justify-content: center;
-        /* Aligns the container to the top so we can see the stats */
-        align-items: flex-start; 
+        align-items: center; /* Changed back to center for stability */
     }
 
     #game-container {
         position: relative;
         width: 1000px;
         height: 768px;
-        /* 70vh makes it a bit shorter for a better fit */
-        transform: scale(calc(min(90vw / 1000, 70vh / 768)));
-        /* This is the secret: keep the top locked in place */
-        transform-origin: top center;
-        margin-top: 20px; 
+        /* Using 70% of the height to guarantee the top bar is visible */
+        transform: scale(calc(min(95vw / 1000, 70vh / 768)));
+        transform-origin: center;
     }
 
     canvas {
         display: block;
         image-rendering: pixelated;
+        margin: 0 auto;
     }
 </style>
+
+<body>
+    <div id="game-container">
+        <div class="gm4html5_div_class" id="gm4html5_div_id">
+            <canvas height="768" id="canvas" width="1000">
+                <p>Your browser doesn't support HTML5 canvas.</p>
+            </canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/bobydob/JSEngine@9b6eab8976a7acc4aee72479af65647693633abc/build/id-br/ibo.js"></script>
+    <script>window.onload = GameMaker_Init;</script>
+</body>
