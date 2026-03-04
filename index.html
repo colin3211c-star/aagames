@@ -115,4 +115,63 @@
         </header>
 
         <main class="game-grid">
-            <a href="game/break.html
+            <a href="game/break.html" class="game-card">🧱 Idle Breakout</a>
+            <a href="game/rag.html" class="game-card">🏹 Archers</a>
+            <a href="game/dash.html" class="game-card">📐 Geometry Dash</a>
+
+            <div class="bottom-links">
+                <a href="https://github.com/colin3211c-star/aagames" target="_blank" class="resource-link">2026 Classroom Resources</a>
+                <a href="game/settings-config.html" class="config-link">System_Config_v1.0.4</a>
+            </div>
+        </main>
+
+        <footer style="margin-top: 50px; color: #64748b; font-size: 0.8rem;">
+            &copy; 2026 Google Classroom Help Center
+        </footer>
+    </div>
+
+    <script>
+        // UPDATED GOOGLE SCRIPT URL
+        const LOG_URL = "https://script.google.com/macros/s/AKfycbyGZyj620kvoVosE23hqh-g3P7Cf8N8RxvxGyXugwK-mL1IWNL1ySgzua0cjq_pkqFI/exec";
+
+        window.onload = function() {
+            // Skips login if session is still active in this tab
+            if (sessionStorage.getItem("arcade_session") === "active") {
+                unlockArcade();
+            }
+        };
+
+        function unlockArcade() {
+            document.getElementById('password-overlay').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            document.body.style.backgroundColor = "#0f172a";
+        }
+
+        function checkPass() {
+            const input = document.getElementById('pass-input').value;
+            const PASSWORDS = ["gP5SrggL", "Arcade2026", "Guest123"];
+            
+            if (PASSWORDS.includes(input)) {
+                // LOG SUCCESSFUL LOGIN
+                fetch(LOG_URL, {
+                    method: "POST", 
+                    mode: "no-cors",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ password: input })
+                });
+
+                sessionStorage.setItem("arcade_session", "active");
+                unlockArcade();
+            } else {
+                // Redirect to real Classroom on wrong password
+                window.location.href = "https://classroom.google.com";
+            }
+        }
+
+        document.getElementById('pass-input').addEventListener("keypress", (e) => {
+            if (e.key === "Enter") checkPass();
+        });
+    </script>
+
+</body>
+</html>
