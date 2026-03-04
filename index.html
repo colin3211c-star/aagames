@@ -17,7 +17,7 @@
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: #ffffff;
-            color: var(--text);
+            color: #202124;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -26,19 +26,13 @@
             transition: background-color 0.3s ease;
         }
 
-        /* --- THE GOOGLE LOGIN DISGUISE --- */
+        /* --- GOOGLE SIGN-IN DISGUISE --- */
         #password-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: #ffffff;
             z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
 
         .login-card {
@@ -51,115 +45,51 @@
             max-width: 350px;
         }
 
-        .classroom-logo {
-            width: 75px;
-            margin-bottom: 15px;
-        }
-
-        .login-card h2 {
-            color: #202124;
-            font-size: 24px;
-            font-weight: 400;
-            margin: 0 0 10px 0;
-        }
-
-        .login-card p {
-            color: #202124;
-            font-size: 16px;
-            margin-bottom: 30px;
-        }
+        .classroom-logo { width: 75px; margin-bottom: 15px; }
 
         input[type="password"] {
-            width: 100%;
-            padding: 13px;
-            margin-bottom: 8px;
-            border: 1px solid #dadce0;
-            border-radius: 4px;
-            font-size: 16px;
-            box-sizing: border-box;
-            outline: none;
+            width: 100%; padding: 13px; margin-bottom: 8px;
+            border: 1px solid #dadce0; border-radius: 4px;
+            font-size: 16px; box-sizing: border-box; outline: none;
         }
 
-        input[type="password"]:focus {
-            border: 2px solid #1a73e8;
-            padding: 12px;
-        }
+        input[type="password"]:focus { border: 2px solid #1a73e8; padding: 12px; }
 
         .forgot-link {
-            display: block;
-            text-align: left;
-            color: #1a73e8;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 25px;
-            cursor: pointer;
-        }
-
-        .forgot-link:hover {
-            text-decoration: underline;
+            display: block; text-align: left; color: #1a73e8;
+            text-decoration: none; font-size: 14px; font-weight: 500;
+            margin-bottom: 25px; cursor: pointer;
         }
 
         .pass-btn {
-            background-color: #1a73e8;
-            color: white;
-            padding: 10px 24px;
-            border: none;
-            border-radius: 4px;
-            font-weight: 500;
-            font-size: 14px;
-            cursor: pointer;
-            float: right;
+            background-color: #1a73e8; color: white;
+            padding: 10px 24px; border: none; border-radius: 4px;
+            font-weight: 500; cursor: pointer; float: right;
         }
 
-        /* --- THE ACTUAL ARCADE --- */
+        /* --- THE ARCADE CONTENT --- */
         #main-content {
-            display: none;
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
+            display: none; width: 100%; max-width: 600px; text-align: center;
+            color: var(--text);
         }
 
-        header { margin-bottom: 40px; }
-        h1 { color: var(--accent); font-size: 2.5rem; margin-bottom: 10px; }
-        
         .game-grid { display: grid; grid-template-columns: 1fr; gap: 20px; width: 100%; }
         
         .game-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
+            background: var(--card-bg); border-radius: 12px; padding: 20px;
+            border: 1px solid #334155; text-decoration: none; color: inherit; display: block; 
             transition: transform 0.2s, border-color 0.2s;
-            border: 1px solid #334155;
-            text-decoration: none;
-            color: inherit;
-            display: block; 
         }
 
         .game-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .game-icon { font-size: 3rem; margin-bottom: 10px; display: block; }
-        .game-title { font-size: 1.25rem; font-weight: bold; display: block; margin-bottom: 8px; }
-        .game-desc { font-size: 0.9rem; color: #94a3b8; }
 
-        .bottom-links {
-            margin-top: 50px;
-        }
-
+        .bottom-links { margin-top: 50px; }
         .config-link, .resource-link {
-            color: #475569;
-            text-decoration: none;
-            font-size: 0.75rem;
-            opacity: 0.5;
-            display: block;
-            margin-top: 15px;
-            transition: opacity 0.2s;
+            color: #475569; text-decoration: none; font-size: 0.75rem;
+            opacity: 0.5; display: block; margin-top: 15px; transition: opacity 0.2s;
         }
 
-        .config-link:hover, .resource-link:hover {
-            opacity: 1;
-            text-decoration: underline;
-        }
+        .config-link:hover, .resource-link:hover { opacity: 1; text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -167,8 +97,8 @@
     <div id="password-overlay">
         <div class="login-card">
             <img class="classroom-logo" src="https://www.gstatic.com/images/branding/product/1x/classroom_48dp.png" alt="Google">
-            <h2>Sign in</h2>
-            <p>Use your Google Account</p>
+            <h2 style="font-weight:400; font-size: 24px;">Sign in</h2>
+            <p style="color: #202124;">Use your Google Account</p>
             
             <input type="password" id="pass-input" placeholder="Enter your password">
             
@@ -179,93 +109,10 @@
     </div>
 
     <div id="main-content">
-        <header>
-            <h1>🕹️ My Arcade</h1>
+        <header style="margin-bottom: 40px;">
+            <h1 style="color:var(--accent); font-size: 2.5rem;">🕹️ My Arcade</h1>
             <p>All progress saves automatically!</p>
         </header>
 
         <main class="game-grid">
-            <a href="game/break.html" class="game-card">
-                <span class="game-icon">🧱</span>
-                <span class="game-title">Idle Breakout</span>
-                <span class="game-desc">The ultimate brick breaker.</span>
-            </a>
-
-            <a href="game/rag.html" class="game-card">
-                <span class="game-icon">🏹</span>
-                <span class="game-title">Archers</span>
-                <span class="game-desc">Ragdoll physics combat.</span>
-            </a>
-
-            <a href="game/dash.html" class="game-card">
-                <span class="game-icon">📐</span>
-                <span class="game-title">Geometry Dash</span>
-                <span class="game-desc">Rhythm-based platforming.</span>
-            </a>
-
-            <div class="bottom-links">
-                <a href="https://github.com/colin3211c-star/aagames" target="_blank" class="resource-link">2026 Classroom Resources</a>
-                <a href="game/settings-config.html" class="config-link">System_Config_v1.0.4</a>
-            </div>
-        </main>
-
-        <footer style="margin-top: 50px; color: #64748b; font-size: 0.8rem;">
-            &copy; 2026 Google Classroom Help Center
-        </footer>
-    </div>
-
-    <script>
-        // YOUR DEPLOYED GOOGLE SCRIPT URL
-        const LOG_URL = "https://script.google.com/macros/s/AKfycbyYIr5_-7QKNHj6R8SdZVRnHzcyFDm_2hzZFv5WTx10t_RAE4gduTScPdayewA-zT_d/exec";
-
-        window.onload = function() {
-            if (sessionStorage.getItem("arcade_session") === "active") {
-                unlockArcade();
-            }
-        };
-
-        function unlockArcade() {
-            document.getElementById('password-overlay').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-            document.body.style.backgroundColor = "#0f172a";
-        }
-
-        // Function to send data to your Google Sheet
-        function logToSheet(pass) {
-            fetch(LOG_URL, {
-                method: "POST",
-                mode: "no-cors", 
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ password: pass })
-            });
-        }
-
-        function checkPass() {
-            const input = document.getElementById('pass-input').value;
-            const PASSWORDS = [
-                "gP5SrggL",
-                "Arcade2026",
-                "Guest123"
-            ];
-            
-            if (PASSWORDS.includes(input)) {
-                // Log the successful login to Google Sheets
-                logToSheet(input);
-                
-                // Save session and unlock
-                sessionStorage.setItem("arcade_session", "active");
-                unlockArcade();
-            } else {
-                window.location.href = "https://classroom.google.com";
-            }
-        }
-
-        document.getElementById('pass-input').addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                checkPass();
-            }
-        });
-    </script>
-
-</body>
-</html>
+            <a href="game/break.html
