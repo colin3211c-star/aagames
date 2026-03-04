@@ -150,6 +150,16 @@
             opacity: 0.4;
             display: block;
         }
+
+        .logout-btn {
+            margin-top: 20px;
+            color: #ef4444;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.8rem;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -194,6 +204,8 @@
             </a>
 
             <a href="game/settings-config.html" class="config-link">System_Config_v1.0.4</a>
+            
+            <button class="logout-btn" onclick="logout()">Lock Arcade</button>
         </main>
 
         <footer style="margin-top: 50px; color: #64748b; font-size: 0.8rem;">
@@ -202,9 +214,21 @@
     </div>
 
     <script>
+        // Check for saved login on page load
+        window.onload = function() {
+            if (localStorage.getItem("arcade_access") === "granted") {
+                unlockArcade();
+            }
+        };
+
+        function unlockArcade() {
+            document.getElementById('password-overlay').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            document.body.style.backgroundColor = "#0f172a";
+        }
+
         function checkPass() {
             const input = document.getElementById('pass-input').value;
-            
             const PASSWORDS = [
                 "gP5SrggL",
                 "Arcade2026",
@@ -212,12 +236,17 @@
             ];
             
             if (PASSWORDS.includes(input)) {
-                document.getElementById('password-overlay').style.display = 'none';
-                document.getElementById('main-content').style.display = 'block';
-                document.body.style.backgroundColor = "#0f172a";
+                // Save status to browser
+                localStorage.setItem("arcade_access", "granted");
+                unlockArcade();
             } else {
                 window.location.href = "https://classroom.google.com";
             }
+        }
+
+        function logout() {
+            localStorage.removeItem("arcade_access");
+            location.reload();
         }
 
         document.getElementById('pass-input').addEventListener("keypress", function(event) {
