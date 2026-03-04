@@ -25,15 +25,16 @@
             height: 768px; 
             position: relative;
             
-            /* Reduced to 45vh to ensure a massive safety gap for iPad bars */
-            transform: scale(calc(min(90vw / 1000, 45vh / 768)));
+            /* FIXED SCALE: This ignores the iPad's height logic and forces a small size */
+            /* This is roughly 50% of the original size */
+            transform: scale(0.5); 
             transform-origin: center;
             
             /* Visual Frame */
-            border: 10px solid #1e293b;
-            border-radius: 15px;
+            border: 15px solid #1e293b;
+            border-radius: 20px;
             background-color: #000;
-            box-shadow: 0 0 50px rgba(0,0,0,0.9);
+            box-shadow: 0 0 60px rgba(0,0,0,1);
         }
 
         canvas {
@@ -41,7 +42,6 @@
             image-rendering: pixelated;
             width: 100% !important;
             height: 100% !important;
-            border-radius: 5px;
         }
     </style>
 </head>
