@@ -14,27 +14,25 @@
             width: 100%;
             height: 100%;
             overflow: hidden; 
-            background-color: #0f172a; /* Frame color */
+            background-color: #0f172a; /* The 'Frame' color around your game */
             display: flex;
             justify-content: center;
-            /* Keeps the game pushed toward the top so it doesn't get cut off */
-            align-items: flex-start; 
+            align-items: center; /* Centers the window so top and bottom are safe */
         }
 
         #game-container {
             width: 1000px; 
             height: 768px; 
             position: relative;
-            /* WIDTH: 85% of screen | HEIGHT: 75% of screen (Clears iPad bar) */
-            transform: scale(calc(min(85vw / 1000, 75vh / 768)));
-            /* Scales from the top center to keep the top menu visible */
-            transform-origin: top center;
-            margin-top: 15px; 
+            /* Scale fix: 85% of width, 70% of height for the perfect iPad fit */
+            transform: scale(calc(min(85vw / 1000, 70vh / 768)));
+            transform-origin: center;
             
+            /* Visual Frame Details */
             border: 5px solid #1e293b;
-            border-radius: 10px;
+            border-radius: 12px;
             background-color: #000;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            box-shadow: 0 0 30px rgba(0,0,0,0.6);
         }
 
         canvas {
@@ -42,9 +40,10 @@
             image-rendering: pixelated;
             width: 100% !important;
             height: 100% !important;
+            border-radius: 5px;
         }
 
-        /* Hides GameMaker scrollbars if they appear */
+        /* Essential for GameMaker iPad compatibility */
         :-webkit-full-screen #canvas {
             width: 100%;
             height: 100%;
