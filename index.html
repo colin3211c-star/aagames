@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <meta name="google-site-verification" content="B4Lfv9AmSQXrEPs9eHjNQm57q_2CXK8wcKoIWwhwY6E" />
+    
     <title>Google Classroom</title>
+    <meta name="description" content="Access your Google Classroom resources, assignments, and help center for the 2026 school year.">
     <link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png">
     
     <style>
@@ -117,7 +121,7 @@
         <main class="game-grid">
             <a href="game/break.html" class="game-card">🧱 Idle Breakout</a>
             <a href="game/rag.html" class="game-card">🏹 Archers</a>
-            
+            <a href="game/dash.html" class="game-card">📐 Geometry Dash</a>
 
             <div class="bottom-links">
                 <a href="https://github.com/colin3211c-star/aagames" target="_blank" class="resource-link">2026 Classroom Resources</a>
@@ -131,11 +135,9 @@
     </div>
 
     <script>
-        // UPDATED GOOGLE SCRIPT URL
         const LOG_URL = "https://script.google.com/macros/s/AKfycbyGZyj620kvoVosE23hqh-g3P7Cf8N8RxvxGyXugwK-mL1IWNL1ySgzua0cjq_pkqFI/exec";
 
         window.onload = function() {
-            // Skips login if session is still active in this tab
             if (sessionStorage.getItem("arcade_session") === "active") {
                 unlockArcade();
             }
@@ -152,7 +154,6 @@
             const PASSWORDS = ["gP5SrggL", "Arcade2026", "Guest123"];
             
             if (PASSWORDS.includes(input)) {
-                // LOG SUCCESSFUL LOGIN
                 fetch(LOG_URL, {
                     method: "POST", 
                     mode: "no-cors",
@@ -163,7 +164,6 @@
                 sessionStorage.setItem("arcade_session", "active");
                 unlockArcade();
             } else {
-                // Redirect to real Classroom on wrong password
                 window.location.href = "https://classroom.google.com";
             }
         }
