@@ -25,16 +25,15 @@
             height: 768px; 
             position: relative;
             
-            /* FIXED SCALE: This ignores the iPad's height logic and forces a small size */
-            /* This is roughly 50% of the original size */
-            transform: scale(0.5); 
+            /* Increased to 0.7 (70% size). Large enough to see, small enough to fit. */
+            transform: scale(0.7); 
             transform-origin: center;
             
             /* Visual Frame */
-            border: 15px solid #1e293b;
-            border-radius: 20px;
+            border: 12px solid #1e293b;
+            border-radius: 15px;
             background-color: #000;
-            box-shadow: 0 0 60px rgba(0,0,0,1);
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
         }
 
         canvas {
