@@ -36,11 +36,9 @@
 
         .game-grid {
             display: grid;
-            /* This line forces one card per row */
             grid-template-columns: 1fr; 
             gap: 20px;
             width: 100%;
-            /* Limits how wide the "rows" get on large screens */
             max-width: 600px; 
         }
 
@@ -53,7 +51,6 @@
             border: 1px solid #334155;
             text-decoration: none;
             color: inherit;
-            /* Ensures the card fills the whole row */
             display: block; 
         }
 
@@ -85,6 +82,7 @@
             margin-top: 50px;
             color: #64748b;
             font-size: 0.8rem;
+            text-align: center;
         }
     </style>
 </head>
@@ -101,20 +99,23 @@
             <span class="game-title">Idle Breakout</span>
             <span class="game-desc">Break bricks and upgrade. Progress saves automatically!</span>
         </a>
+
         <a href="game/rag.html" class="game-card">
             <span class="game-icon">🏹</span>
             <span class="game-title">Archers</span>
-            <span class="game-desc">Use the arrows to kill the enemy</span>
+            <span class="game-desc">Use the arrows to kill the enemy.</span>
         </a>
+
         <a href="game/dash.html" class="game-card">
             <span class="game-icon">📐</span>
             <span class="game-title">Geometry Dash</span>
-            <span class="game-desc">Play Geometry Dash Lite</span>
+            <span class="game-desc">Play Geometry Dash Lite.</span>
         </a>
+
         <a href="game/money.html" class="game-card">
             <span class="game-icon">💰</span>
             <span class="game-title">Adventure Capitalist</span>
-            <span class="game-desc">Play Adventure Capitalist</span>
+            <span class="game-desc">Build your financial empire!</span>
         </a>
     </main>
 
