@@ -1,63 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Classroom</title>
     <link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png">
-    
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: #000;
+        body {
+            background-color: #0f172a;
+            color: white;
+            font-family: sans-serif;
+            display: none; /* Hide everything until password is correct */
+            text-align: center;
+            padding-top: 50px;
         }
-
-        #gm4html5_div_id {
-            display: none; /* Hidden until password is correct */
-            width: 100%;
-            height: 100%;
-        }
-
-        canvas {
+        .game-link {
             display: block;
-            width: 100vw;
-            height: 100vh;
+            margin: 20px;
+            color: #38bdf8;
+            text-decoration: none;
+            font-size: 24px;
         }
     </style>
 </head>
 <body>
 
-    <div class="gm4html5_div_class" id="gm4html5_div_id">
-        <canvas height="768" id="canvas" width="1000">
-            <p>Your browser doesn't support HTML5 canvas.</p>
-        </canvas>
-    </div>
+    <h1>My Games</h1>
+    <a href="game/break.html" class="game-link">Idle Breakout</a>
+    <a href="game/archer.html" class="game-link">Ragdoll Archers</a>
+    <a href="game/geo.html" class="game-link">Geometry Dash</a>
 
-    <script src="https://cdn.jsdelivr.net/gh/bobydob/JSEngine@9b6eab8976a7acc4aee72479af65647693633abc/build/id-br/ibo.js"></script>
-    
     <script>
-        // 1. ADD YOUR PASSWORDS HERE
-        const validPasswords = ["gP5SrggL", "w-reck", "secret77"];
+        // 1. LIST ALL YOUR PASSWORDS HERE
+        const validPasswords = ["777", "math", "apple", "1234"];
 
-        function checkPassword() {
-            const userEntry = prompt("Enter Access Code:");
-            
-            // 2. This checks if the entered text is in your list
-            if (validPasswords.includes(userEntry)) {
-                document.getElementById("gm4html5_div_id").style.display = "block";
-                GameMaker_Init();
+        function checkAccess() {
+            // Check if they already logged in this session
+            if (sessionStorage.getItem("loggedIn") === "true") {
+                document.body.style.display = "block";
+                return;
+            }
+
+            const password = prompt("Please enter the access code:");
+
+            // 2. Check if the typed password is in our list
+            if (validPasswords.includes(password)) {
+                sessionStorage.setItem("loggedIn", "true");
+                document.body.style.display = "block";
             } else {
-                alert("Incorrect Password");
-                window.location.href = "https://classroom.google.com"; // Sends them away
+                alert("Access Denied");
+                window.location.href = "https://google.com";
             }
         }
 
-        window.onload = checkPassword;
+        checkAccess();
     </script>
-
 </body>
 </html>
