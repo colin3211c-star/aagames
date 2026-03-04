@@ -1,34 +1,56 @@
-<style>
-    body, html {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden; 
-        background-color: #0f172a; /* Dark blue background to act as the 'frame' */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Google Classroom</title>
+    <link rel="icon" type="image/png" href="https://ssl.gstatic.com/classroom/favicon.png">
+    
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; 
+            background-color: #0f172a; /* Dark frame color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    #game-container {
-        position: relative;
-        width: 1000px;
-        height: 768px;
-        /* Scales to 80% of the screen so it never touches the edges */
-        transform: scale(calc(min(80vw / 1000, 80vh / 768)));
-        transform-origin: center;
-        
-        /* Adds a nice border to make it look like a real game window */
-        border: 10px solid #1e293b;
-        border-radius: 15px;
-        box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        background-color: #000;
-    }
+        /* Using the exact Archer-style scaling method */
+        #game-container {
+            width: 1000px; /* Game original width */
+            height: 768px; /* Game original height */
+            position: relative;
+            /* Scale to 85% of screen so it has a frame */
+            transform: scale(calc(min(85vw / 1000, 85vh / 768)));
+            transform-origin: center;
+            border: 8px solid #1e293b; /* Visual frame */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
 
-    canvas {
-        display: block;
-        image-rendering: pixelated;
-        border-radius: 5px;
-    }
-</style>
+        canvas {
+            display: block;
+            image-rendering: pixelated;
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <div class="gm4html5_div_class" id="gm4html5_div_id">
+            <canvas height="768" id="canvas" width="1000">
+                <p>Your browser doesn't support HTML5 canvas.</p>
+            </canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/gh/bobydob/JSEngine@9b6eab8976a7acc4aee72479af65647693633abc/build/id-br/ibo.js"></script>
+    <script>window.onload = GameMaker_Init;</script>
+</body>
+</html>
