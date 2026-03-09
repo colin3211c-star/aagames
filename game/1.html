@@ -1,57 +1,119 @@
-<!-- Ultimate Game Stash file--> 
-<!-- For the regularly updating doc go to https://docs.google.com/document/d/1_FmH3BlSBQI7FGgAQL59-ZPe8eCxs35wel6JUyVaG8Q/ -->
-
-
-</style></head><body dir="ltr"><script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/UnityProgress.js"></script><script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.js"></script><script type="text/javascript">
-      var gameInstance;
-
-      window.onload = function () {
-        gameInstance = UnityLoader.instantiate("gameContainer", "https://cdn.jsdelivr.net/gh/n-101-1/1@main/2.7.json", {
-          onProgress: UnityProgress,
-          Module: {
-            onRuntimeInitialized: function () {
-              UnityProgress(gameInstance, "complete");
-            },
-          },
-        });
-      };
-    </script>
-    <div class="webgl-content">
-      <div id="gameContainer" style="width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; position: relative; background: rgb(0, 0, 0);"><canvas id="#canvas" style="width: 100%; height: 100%; cursor: default;" width="1018" height="926"></canvas><div class="logo Dark" style="display: none;"></div><div class="progress Dark" style="display: none;"><div class="empty" style="width: 0%;"></div><div class="full" style="width: 100%;"></div></div></div>
+<!-- shxyder -->
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title class="cloak">Pixel Gun Survival | MacVG</title>
+  <span id="macvgmacvg" name="game173"></span>
+  <link class="favicon" rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/fnafben/1234188746455876655@main/logo.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fnafben/1234188746455876655@main/TemplateData/style.css" />
+</head>
+<body>
+  <div id="unity-container" class="unity-desktop">
+    <canvas id="unity-canvas" width="100%" height="100%"></canvas>
+    <div id="unity-loading-bar">
+      <div id="unity-logo"></div>
+      <div id="unity-progress-bar-empty">
+        <div id="unity-progress-bar-full"></div>
+      </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-app.js"></script>
+    <div id="unity-mobile-warning">
+      WebGL builds are not supported on mobile devices.
+    </div>
+  </div>
 
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-auth.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase-firestore.js"></script>
+  <script>
+    var buildUrl = "https://cdn.jsdelivr.net/gh/fnafben/1234188746455876655@main/Build";
+    var loaderUrl = buildUrl + "/Shooting.loader.js";
+    var config = {
+      dataUrl: buildUrl + "/Shooting.data.unityweb",
+      frameworkUrl: buildUrl + "/Shooting.framework.js.unityweb",
+      codeUrl: buildUrl + "/Shooting.wasm.unityweb",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "Mentolatux",
+      productName: "Pixel Gun Survival",
+      productVersion: "3",
+    };
 
-    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firebase.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1login.js?v=2"></script>
-    <script src="https://cdn.jsdelivr.net/gh/n-101-1/1@main/1firestore.js"></script>
+    var container = document.querySelector("#unity-container");
+    var canvas = document.querySelector("#unity-canvas");
+    var loadingBar = document.querySelector("#unity-loading-bar");
+    var progressBarFull = document.querySelector("#unity-progress-bar-full");
+    var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+    var mobileWarning = document.querySelector("#unity-mobile-warning");
 
-    <script>
-      initializeFireBase();
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      container.className = "unity-mobile";
+      config.devicePixelRatio = 1;
+      mobileWarning.style.display = "block";
+      setTimeout(() => {
+        mobileWarning.style.display = "none";
+      }, 5000);
+    } else {
+      canvas.style.width = "870px";
+      canvas.style.height = "570px";
+    }
 
-      function showAds() {
-        console.log("show ads");
-      }
-      function requestNewAd() {
-        // Show video ad
-        unityAdFinishedCallback();
-      }
-      function unityAdFinishedCallback() {
+    canvas.style.background = "url('https://cdn.jsdelivr.net/gh/organization-schoogls/y@main/background.gif') center / cover";
+    loadingBar.style.display = "block";
+
+    // Dosya birleştirme fonksiyonu
+    async function mergeDataParts() {
+      const partFiles = [
+        buildUrl + "/Shooting.data.unityweb.part001",
+        buildUrl + "/Shooting.data.unityweb.part002",
+        buildUrl + "/Shooting.data.unityweb.part003"
+      ];
+
+      const blobs = [];
+
+      // Parçaları sırayla indir
+      for (const part of partFiles) {
         try {
-          if (gameInstance) gameInstance.SendMessage("AdsManager", "OnWebCallback");
+          const response = await fetch(part);
+          if (!response.ok) throw new Error(`Parça yüklenemedi: ${part}`);
+          const blob = await response.blob();
+          blobs.push(blob);
         } catch (error) {
-          console.log(error);
+          console.error(error);
+          return null;
         }
       }
-    </script>
-  
 
+      // Parçaları birleştir
+      const mergedBlob = new Blob(blobs, { type: "application/octet-stream" });
+      const mergedUrl = URL.createObjectURL(mergedBlob);
+      return mergedUrl;
+    }
 
-
-
-
-
-</script><script src="blob:https://gotlgsogl-opensocial.googleusercontent.com/43fddd1c-53cc-4d6d-88c5-93762d972e03" id="a96bf7f9ec45ce9224c9b5b9b42b17b2"></script></body></html>
+    // Unity yüklemesini başlat
+    mergeDataParts().then((mergedDataUrl) => {
+      if (mergedDataUrl) {
+        config.dataUrl = mergedDataUrl; // Birleştirilmiş dosya URL'sini kullan
+        var script = document.createElement("script");
+        script.src = loaderUrl;
+        script.onload = () => {
+          createUnityInstance(canvas, config, (progress) => {
+            progressBarFull.style.width = 100 * progress + "%";
+          })
+          .then((unityInstance) => {
+            loadingBar.style.display = "none";
+            if (fullscreenButton) {
+              fullscreenButton.onclick = () => {
+                unityInstance.SetFullscreen(1);
+              };
+            }
+          })
+          .catch((message) => {
+            console.error("Unity yükleme hatası:", message);
+          });
+        };
+        document.body.appendChild(script);
+      } else {
+        console.error("Dosya birleştirme başarısız, Unity yüklenemiyor.");
+      }
+    });
+  </script>
+</body>
+</html>
